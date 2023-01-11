@@ -4,7 +4,7 @@ import lombok.Getter;
 
 public enum PageWaitTime {
 
-    WAIT_TIME(4);
+    WAIT_TIME(8);
 
      long pageWaitTime;
 

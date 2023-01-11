@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "Features/",
         glue = "steps",
-        tags = "@debug",
+        tags = "@regression",
         plugin = { "pretty"},
         monochrome = true)
 

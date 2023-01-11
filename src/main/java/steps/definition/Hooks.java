@@ -40,5 +40,4 @@ public class Hooks extends Base {
         log.info("Browser quit");
         driver.quit();
     }
-
 }

@@ -1,6 +1,7 @@
 package steps.libraries;
 
 import base.Base;
+import lombok.SneakyThrows;
 import org.awaitility.Awaitility;
 import org.openqa.selenium.Keys;
 import page.AddToCartPage;
@@ -12,8 +13,8 @@ public class AddToCartStep extends Base {
     private AddToCartPage addToCartPage = new AddToCartPage();
     private CommonStep commonStep = new CommonStep();
 
-
-    public void searchForItem(String item) throws InterruptedException {
+    @SneakyThrows
+    public void searchForItem(String item){
         addToCartPage.searchInput.sendKeys(item, Keys.ENTER);
         Awaitility.await().atMost(PageWaitTime.WAIT_TIME.getPageWaitTime(), TimeUnit.SECONDS).until(addToCartPage.gwynEnduranceTeeItem::isDisplayed);
         commonStep.scrollDownToElement(addToCartPage.gwynEnduranceTeeItem);
@@ -24,13 +25,15 @@ public class AddToCartStep extends Base {
 
     }
 
-    public void enterQty(String qty) throws InterruptedException {
+    @SneakyThrows
+    public void enterQty(String qty){
         addToCartPage.qtyInputField.sendKeys(Keys.DELETE, qty);
         addToCartPage.addToCartButton.click();
         TimeUnit.SECONDS.sleep(PageWaitTime.WAIT_TIME.getPageWaitTime());
     }
 
-    public String getTotalPrice() throws InterruptedException {
+    @SneakyThrows
+    public String getTotalPrice() {
         addToCartPage.cartTrolleyButton.click();
         TimeUnit.SECONDS.sleep(PageWaitTime.WAIT_TIME.getPageWaitTime());
         return addToCartPage.totalPriceText.getText();

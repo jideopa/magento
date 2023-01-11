@@ -24,15 +24,15 @@ public class AddToCartDefinition {
 
 
     @And("user add {int} {string} is added to cart")
-    public void userAddIsAddedToCart(int qty, String item) throws InterruptedException {
+    public void userAddIsAddedToCart(int qty, String item){
         addToCartStep.searchForItem(item);
         addToCartStep.enterQty(String.valueOf(qty));
     }
 
     @Then("cart total should be {string}")
-    public void cartTotalShouldBe(String price) throws InterruptedException {
+    public void cartTotalShouldBe(String price){
         SoftAssertions softly = new SoftAssertions();
-        softly.assertThat(price).isEqualTo(addToCartStep.getTotalPrice());
+        softly.assertThat(addToCartStep.getTotalPrice()).isEqualTo(price);
         softly.assertAll();
     }
 

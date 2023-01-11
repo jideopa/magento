@@ -3,7 +3,6 @@ package steps.libraries;
 import base.Base;
 import io.cucumber.java.After;
 import lombok.SneakyThrows;
-import lombok.extern.log4j.Log4j;
 import lombok.extern.log4j.Log4j2;
 import org.awaitility.Awaitility;
 import org.openqa.selenium.JavascriptExecutor;
@@ -19,9 +18,7 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 @Log4j2
 public class CommonStep extends Base {
-    AddToCartPage addToCartPage = new AddToCartPage();
-    static JavascriptExecutor js = (JavascriptExecutor) driver;
-
+    private AddToCartPage addToCartPage = new AddToCartPage();
     public void OpenPage(String page) {
         Properties properties = new Properties();
         FileReader fileReader = null;
@@ -43,6 +40,7 @@ public class CommonStep extends Base {
     }
 
     public void scrollDownToElement(WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
        log.info("Strolling to element");
         js.executeScript("arguments[0].scrollIntoView();", element);
     }
